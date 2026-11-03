@@ -41,6 +41,8 @@ function GithubIcon({ className = "h-4 w-4" }: { className?: string }) {
   );
 }
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default function PortfolioPage() {
   const [lang, setLang] = useState<Lang>("th");
   const [isDark, setIsDark] = useState<boolean>(true);
@@ -71,7 +73,7 @@ export default function PortfolioPage() {
             <div className="relative h-10 w-10 overflow-hidden rounded-xl border border-[#C6A16E]/50 bg-[#1B1714] shadow-sm transition group-hover:scale-105 group-hover:border-[#E2C290]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/logo-sf.jpg"
+                src={`${basePath}/logo-sf.jpg`}
                 alt="SF Logo"
                 className="h-full w-full object-cover"
               />
@@ -705,7 +707,6 @@ export default function PortfolioPage() {
       <CvPreviewModal
         open={cvOpen}
         onClose={() => setCvOpen(false)}
-        cvUrl={profile.cvUrl}
         lang={lang}
       />
     </div>
